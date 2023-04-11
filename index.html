@@ -8,10 +8,16 @@
 </head>
 <body>
     <div id="root">
-        <h1>Hello World from HTML !!!!</h1>
+        <!-- <h1>Hello World from HTML !!!!</h1> -->
     </div>
 
+    <script>
+        const heading = document.createElement('h1');
+        heading.innerHTML ='Hello World from Js';
+        const root = document.getElementById('root');
+        root.appendChild(heading);
 
+    </script>
     
 </body>
 </html>
