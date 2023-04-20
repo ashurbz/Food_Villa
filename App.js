@@ -2,25 +2,30 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 //React Element
-const heading = <h1>Heading Element</h1>
+const headerElement = <div className='title'>
+    <h1>Hiii H1</h1>
+    <h2>Hii H2</h2>
+    <h3>Hiii H3</h3>
+</div>
 
-const HeadingComponent2 =()=>{
-    return <h3>Heading component2</h3>
+const Func =() =>{
+    return 2+3;
 }
 
-const number = 1900900
-
 //React Component
-const HeadingComponent =() =>{
-    return <>
-    <HeadingComponent2/> 
-    {heading}
-    <h1>React Component</h1>
-    </> 
-    
-
+const HeaderComponent = () =>{
+   return <div className='title'>
+    {Func()}
+    <br />
+    <Func></Func>
+    <br/>
+    <Func/>
+    <h1>Hiii H1</h1>
+    <h2>Hii H2</h2>
+    <h3>Hiii H3</h3>
+</div>
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<HeadingComponent/>);
+root.render(<HeaderComponent/>);
 
