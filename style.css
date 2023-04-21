@@ -1,29 +1,64 @@
-.header{
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+
+.header-container{
     display: flex;
     justify-content: space-between;
-   background-color: cornflowerblue;
-    border-radius: 10px;
-    padding: 5px;
+    padding: 0px 30px;
+    box-shadow: 1px 1px 1px black;
+   font-size: medium;
 }
 
+.nav-items{
+    display: flex;
+    list-style-type: none;
+}
 .logo{
-    height: 100px;
     width: 100px;
-    border: 0;
     border-radius: 50%;
 }
-
-.search-bar-container{
-    width: 50%;
-    padding: 20px;
-}
-.search-bar{
-width: 100%;
-height: 25px;
+.nav-items > li{
+    padding: 10px;
+    font-weight: 700;
 }
 
-.user-icon{
-    height: 100px;
-    width: 100px;
+.cart{
+    width: 40px;
 }
 
+.cart-container{
+    padding: 10px;
+}
+
+.right{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+/* resto component */
+
+
+
+.resto-card{
+    display: flex;
+    padding: 40px;
+    width: 100%;
+    flex-wrap: wrap;
+
+}
+
+.card-container{
+    width: 20%;
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+    
+
+}
+
+.resto-image > img{
+    width: 100%;
+}
