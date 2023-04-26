@@ -1,6 +1,7 @@
 import NavItems from "./NavItems";
 import Cart from "./Cart.js"
 import { LOGO_IMG_URL } from "../../../constant";
+import Auth from './Auth'
 
 const Title = () => {
     return (
@@ -30,6 +31,9 @@ const Title = () => {
           </div>
           <div className="nav-items-container">
             <NavItems />
+          </div>
+          <div>
+            <Auth />
           </div>
         </div>
       </div>

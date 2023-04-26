@@ -1,3 +1,5 @@
+import BodyComponent from "../BodyComponent/BodyComponent";
+
 const NavItems = () => {
     return (
       <>
@@ -11,3 +13,7 @@ const NavItems = () => {
   };
 
   export default NavItems;
+
+
+
+   

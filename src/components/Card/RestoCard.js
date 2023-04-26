@@ -1,6 +1,7 @@
 import { CARD_IMG_URL } from "../../../constant";
 
 const RestoCard = ({props}) => {
+
   
     const {name,cloudinaryImageId,cuisines,avgRating} =props;
      
