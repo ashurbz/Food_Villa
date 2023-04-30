@@ -1,11 +1,22 @@
-import BodyComponent from "../BodyComponent/BodyComponent";
+import { Link } from "react-router-dom";
 
 const NavItems = () => {
     return (
       <>
         <ul className="nav-items">
-          <li>Home</li>
-          <li>Help</li>
+
+          <li>
+            <Link to='/' >
+            Home
+            </Link>
+            
+            </li>
+            <li>
+            <Link to='/about' >
+            About
+            </Link>
+            
+            </li>
           <li>Profile</li>
         </ul>
       </>

@@ -50,6 +50,19 @@ html, body {
 
 }
 
+.shimmer-container{
+    width: 100%;
+    display: flex;
+}
+
+.shimmer-card{
+    background-color: lightgray;
+    width: 25%;
+    height: 100%;
+    margin: 10px;
+    border: 1px solid lightblue
+}
+
 .card-container{
     width: 20%;
     border: 1px solid black;
@@ -61,4 +74,14 @@ html, body {
 
 .resto-image > img{
     width: 100%;
+}
+
+.resta-details-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.resta-details{
+    margin: 50px;
+    padding: 20px;
 }

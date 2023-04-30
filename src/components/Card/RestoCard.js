@@ -6,7 +6,7 @@ const RestoCard = ({props}) => {
     const {name,cloudinaryImageId,cuisines,avgRating} =props;
      
         return(
-      <div className="card-container">
+      <div >
         <div className="resto-image">
           <img  src={CARD_IMG_URL + cloudinaryImageId} ></img>
         </div>

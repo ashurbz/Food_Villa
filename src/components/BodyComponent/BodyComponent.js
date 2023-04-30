@@ -2,6 +2,7 @@ import RestoCard from "../Card/RestoCard";
 // import  SearchComponent from "../Search/SearchComponent";
 import { useEffect, useState } from "react";
 import Shimmer from "../Shimmer";
+import { Link } from "react-router-dom";
 
 const BodyComponent = () => {
 const [searchText, setSearchText] = useState("");
@@ -69,7 +70,11 @@ const Api = async function (){
       </div>
       <div className="resto-card">
         {searchData.map((details) => {
-          return <RestoCard props={details.data} key={details.data.id} />;
+          return <div className="card-container"> <Link key={details.data.id} to={'/resto/' + details.data.id} >
+           <RestoCard props={details.data} />;
+          </Link>
+          </div>
+         
         })}
       </div>
     </>
