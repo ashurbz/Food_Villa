@@ -2,22 +2,27 @@ import NavItems from "./NavItems";
 import Cart from "./Cart.js"
 import { LOGO_IMG_URL } from "../../../constant";
 import Auth from './Auth'
+import { Link } from "react-router-dom";
+import useConnectivityCheck from "../../utils/useConnectivityCheck";
 
 const Title = () => {
     return (
       <>
-        <a href="/">
-          <img
+        <Link to='/'>
+        <img
             className="logo"
             src={LOGO_IMG_URL}
           ></img>
-        </a>
+        </Link>
+         
+        
       </>
     );
   };
 
 
   const HeaderComponent = () => {
+    const connection = useConnectivityCheck();
     return (
       <div className="header-container">
         <div className="left">
@@ -31,6 +36,9 @@ const Title = () => {
           </div>
           <div className="nav-items-container">
             <NavItems />
+          </div>
+          <div style={{margin:'10px'}}>
+            {connection ? '✅' :'🔴'}
           </div>
           <div>
             <Auth />

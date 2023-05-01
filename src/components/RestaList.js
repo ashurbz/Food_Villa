@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { CARD_IMG_URL, MENU_IMG_URL } from "../../constant";
 import { useParams } from "react-router-dom";
+import { RESTA_MENU_API_URL } from "../../constant";
 
 const RestaList = () => {
   // not able to give null
@@ -26,7 +27,7 @@ const RestaList = () => {
 
   async function getRestoList() {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6738274&lng=77.1642584&restaurantId=" +
+      RESTA_MENU_API_URL +
         id
     );
     const json = await data.json();
@@ -58,9 +59,9 @@ const RestaList = () => {
       <div className="resta-menu">
          <div>
             {restaMenuDetails[0]?.restaurantMenu.map((item)=>{
-              return <div key={item?.card?.info?.name?.id}>
+              return <div >
                <ul>
-                  <li>{item?.card?.info?.name}</li>
+                  <li key={item?.card?.info?.name?.id}>{item?.card?.info?.name}</li>
                   </ul>
                   <div>
                      {item?.card?.info?.price/100} Rs

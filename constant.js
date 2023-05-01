@@ -5,6 +5,11 @@ export const LOGO_IMG_URL= 'https://lh3.googleusercontent.com/p/AF1QipMf9w4RomHX
 
 export const CART_IMG_URL ="https://cdn-icons-png.flaticon.com/512/2838/2838895.png"
 export const MENU_IMG_URL = 'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,e_grayscale,c_fit/'
+
+export const RESTA_MENU_API_URL ="https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6738274&lng=77.1642584&restaurantId="
+
+export const RESTA_LIST_API_URL ='https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5805244377767&lng=77.04774208366871&page_type=DESKTOP_WEB_LISTING'
+
 export const restoData = [
     
     {

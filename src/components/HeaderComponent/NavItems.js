@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+
 const NavItems = () => {
     return (
       <>
@@ -23,6 +24,11 @@ const NavItems = () => {
             Contact Us
             </Link>
            
+            </li>
+            <li>
+            <Link to='/instamart'>
+            Instamart
+            </Link>
             </li>
         </ul>
       </>

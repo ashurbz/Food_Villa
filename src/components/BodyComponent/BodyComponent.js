@@ -3,14 +3,13 @@ import RestoCard from "../Card/RestoCard";
 import { useEffect, useState } from "react";
 import Shimmer from "../Shimmer";
 import { Link } from "react-router-dom";
+import { RESTA_LIST_API_URL } from "../../../constant";
+import useConnectivityCheck from "../../utils/useConnectivityCheck";
 
 const BodyComponent = () => {
-const [searchText, setSearchText] = useState("");
-const [searchData, setSearchData] = useState([]);
-const [allResta , setAllResta] = useState([])
-
-
-
+  const [searchText, setSearchText] = useState("");
+  const [searchData, setSearchData] = useState([]);
+  const [allResta, setAllResta] = useState([]);
 
   function filterData(allResta, searchText) {
     const filterData = allResta.filter((data) => {
@@ -19,28 +18,31 @@ const [allResta , setAllResta] = useState([])
 
     return filterData;
   }
-  
-  useEffect(()=>{
+
+
+
+  useEffect(() => {
     Api();
+  }, []);
 
-  },[])
+  const Api = async function () {
+    const data = await fetch(RESTA_LIST_API_URL);
+    const jsonData = await data.json();
 
+    setSearchData(jsonData?.data?.cards[2]?.data?.data?.cards);
+    setAllResta(jsonData?.data?.cards[2]?.data?.data?.cards);
+  };
 
+  const isConnected = useConnectivityCheck();
 
-const Api = async function (){
-   const data= await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5805244377767&lng=77.04774208366871&page_type=DESKTOP_WEB_LISTING');
-   const jsonData =await data.json()
+  if(!isConnected){
+   return <h1>Please Check Your Internet Connection</h1>
+  }
 
-   setSearchData(jsonData?.data?.cards[2]?.data?.data?.cards);
-   setAllResta(jsonData?.data?.cards[2]?.data?.data?.cards);
-   
-}
-
-
-  
-  return searchData.length ==0 ? (<Shimmer/>) :    (
+  return searchData.length == 0 ? (
+    <Shimmer />
+  ) : (
     <>
-   
       <div className="search">
         <div className="search-container">
           <div className="search-bar">
@@ -53,7 +55,7 @@ const Api = async function (){
               }}
             />
           </div>
-              
+
           <div className="search-button">
             <button
               type="button"
@@ -70,15 +72,17 @@ const Api = async function (){
       </div>
       <div className="resto-card">
         {searchData.map((details) => {
-          return <div className="card-container"> <Link key={details.data.id} to={'/resto/' + details.data.id} >
-           <RestoCard props={details.data} />;
-          </Link>
-          </div>
-         
+          return (
+            <div className="card-container">
+              {" "}
+              <Link key={details.data.id} to={"/resto/" + details.data.id}>
+                <RestoCard props={details.data} />;
+              </Link>
+            </div>
+          );
         })}
       </div>
     </>
-  
   );
 };
 
