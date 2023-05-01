@@ -17,7 +17,13 @@ const NavItems = () => {
             </Link>
             
             </li>
-          <li>Profile</li>
+
+          <li>
+            <Link to='/contact'>
+            Contact Us
+            </Link>
+           
+            </li>
         </ul>
       </>
     );

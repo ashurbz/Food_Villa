@@ -9,8 +9,20 @@ const RestaList = () => {
   const { id } = useParams();
 
   useEffect(() => {
+  
     getRestoList();
+
+   const timer = setInterval(()=>{
+      console.log('setInterval from RestaList')
+    },1000)
+
+   return ()=>{
+    clearInterval(timer)
+    }
+   
   }, []);
+
+ 
 
   async function getRestoList() {
     const data = await fetch(
@@ -31,8 +43,7 @@ const RestaList = () => {
     ]);
   }
 
-  console.log(restaMenuDetails[0]?.restaurantMenu)
-  console.log()
+
 
   return (
     <div className="resta-details-container">
@@ -47,7 +58,7 @@ const RestaList = () => {
       <div className="resta-menu">
          <div>
             {restaMenuDetails[0]?.restaurantMenu.map((item)=>{
-              return <div>
+              return <div key={item?.card?.info?.name?.id}>
                <ul>
                   <li>{item?.card?.info?.name}</li>
                   </ul>

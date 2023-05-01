@@ -5,8 +5,9 @@ import BodyComponent from "./components/BodyComponent/BodyComponent";
 import About from "./components/About";
 import ErrorComponent from "./components/ErrorComponent";
 import Footer from "./components/Footer"; 
-
+import Profile from "./components/Profile";
 import RestaList from "./components/RestaList";
+import Contact from "./components/Contact";
 import {createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
 
 
@@ -34,12 +35,21 @@ const appRoutes = createBrowserRouter([
     },
     {
       path:'/about',
-      element:<About/>
+      element:<About/>,
+      children:[{
+        path:'profile',
+        element:<Profile/>
+      }]
     },
     {
       path:'/resto/:id',
       element:<RestaList/>
+    },
+    {
+      path:'contact',
+      element: <Contact/>
     }
+    
   ]
   }
 ])
