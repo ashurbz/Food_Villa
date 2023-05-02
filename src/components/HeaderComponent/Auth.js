@@ -11,7 +11,7 @@ const Auth = (props) => {
   // }
 
   return (
-    <div className="auth-container">
+    <div className="flex pt-12">
       {authentication == "true" ? (
         <button
           onClick={() => {

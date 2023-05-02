@@ -1,12 +1,16 @@
-import { CART_IMG_URL } from "../../../constant";
+
+import cartIcon from '../../assets/cart.svg'
 const Cart = () => {
     return (
       <>
-        <img
+      <div className='py-7 px-3' >
+      <img width='50pxpx'
           className="cart"
           alt="cart-icon"
-          src={CART_IMG_URL}
+          src={cartIcon}
         ></img>
+      </div>
+      
       </>
     );
   };

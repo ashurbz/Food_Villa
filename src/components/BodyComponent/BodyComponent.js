@@ -39,14 +39,15 @@ const BodyComponent = () => {
    return <h1>Please Check Your Internet Connection</h1>
   }
 
-  return searchData.length == 0 ? (
+  return searchData.length === 0 ? (
     <Shimmer />
   ) : (
     <>
       <div className="search">
-        <div className="search-container">
-          <div className="search-bar">
+        <div className="flex py-2 px-2">
+          <div className="px-5">
             <input
+            className="p-3 outline-none bg-pink-50 rounded-md"
               type="text"
               placeholder="Search Here..."
               value={searchText}
@@ -56,27 +57,27 @@ const BodyComponent = () => {
             />
           </div>
 
-          <div className="search-button">
-            <button
-              type="button"
+          <div className="rounded-lg bg-purple-800 text-white p-2 hover:bg-green-700 cursor-pointer"
+            
+          
               onClick={() => {
                 const data = filterData(allResta, searchText);
                 setSearchData(data);
               }}
-            >
+          >
               Search
-            </button>
+            </div>
           </div>
           <h1></h1>
         </div>
-      </div>
-      <div className="resto-card">
+      
+      <div className="flex justify-around  flex-wrap p-5">
         {searchData.map((details) => {
           return (
-            <div className="card-container">
+            <div className="p-4 w-60">
               {" "}
               <Link key={details.data.id} to={"/resto/" + details.data.id}>
-                <RestoCard props={details.data} />;
+                <RestoCard props={details.data} />
               </Link>
             </div>
           );

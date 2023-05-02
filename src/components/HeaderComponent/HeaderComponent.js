@@ -1,6 +1,6 @@
 import NavItems from "./NavItems";
 import Cart from "./Cart.js"
-import { LOGO_IMG_URL } from "../../../constant";
+import logoIcon from '../../assets/logo.png' 
 import Auth from './Auth'
 import { Link } from "react-router-dom";
 import useConnectivityCheck from "../../utils/useConnectivityCheck";
@@ -9,9 +9,9 @@ const Title = () => {
     return (
       <>
         <Link to='/'>
-        <img
+        <img width='200px'
             className="logo"
-            src={LOGO_IMG_URL}
+            src={logoIcon}
           ></img>
         </Link>
          
@@ -24,26 +24,27 @@ const Title = () => {
   const HeaderComponent = () => {
     const connection = useConnectivityCheck();
     return (
-      <div className="header-container">
-        <div className="left">
-          <div className="logo-container">
+      <div className="flex justify-between bg-pink-50 box-border shadow-md">
+        <div>
+          <div>
             <Title />
           </div>
         </div>
-        <div className="right">
-          <div className="cart-container">
-            <Cart />
-          </div>
-          <div className="nav-items-container">
+        <div className="">
             <NavItems />
           </div>
-          <div style={{margin:'10px'}}>
-            {connection ? '✅' :'🔴'}
+          <div className="pt-12" >
+            {connection ? 'Online✅' :'Offline🔴'}
           </div>
           <div>
             <Auth />
           </div>
-        </div>
+          <div className="cart-container">
+            <Cart />
+          </div>
+          
+         
+        
       </div>
     );
   };

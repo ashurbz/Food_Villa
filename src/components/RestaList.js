@@ -47,8 +47,8 @@ const RestaList = () => {
 
 
   return (
-    <div className="resta-details-container">
-      <div className="resta-details">
+    <div className="flex p-5">
+      <div className="p-5">
       <h2>{restaMenuDetails[1]?.restaurantA?.name}</h2>
       <img src={CARD_IMG_URL +restaMenuDetails[1]?.restaurantA?.cloudinaryImageId } width='200px' height='200px' />
       <h3>{restaMenuDetails[1]?.restaurantA?.areaName}</h3>
@@ -56,8 +56,8 @@ const RestaList = () => {
       <h3>{restaMenuDetails[1]?.restaurantA?.avgRating}</h3>
       <h4> {restaMenuDetails[1]?.restaurantA?.costForTwoMessage} </h4>
       </div>
-      <div className="resta-menu">
-         <div>
+      <div className="p-5">
+          <div className="p-5">
             {restaMenuDetails[0]?.restaurantMenu.map((item)=>{
               return <div >
                <ul>

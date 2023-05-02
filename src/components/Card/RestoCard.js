@@ -6,17 +6,17 @@ const RestoCard = ({props}) => {
     const {name,cloudinaryImageId,cuisines,avgRating} =props;
      
         return(
-      <div >
+      <div className="w-52 overflow-hidden bg-pink-50 rounded-lg" >
         <div className="resto-image">
-          <img  src={CARD_IMG_URL + cloudinaryImageId} ></img>
+          <img className="rounded-md" width="180px" src={CARD_IMG_URL + cloudinaryImageId} ></img>
         </div>
         <div className="resto-name">
           <h2>{name}</h2>
         </div>
-        <div className="cuisines">
-           <h3> {cuisines.join()}</h3> 
+     
+           <span> {cuisines.join()}</span> 
     
-        </div>
+       
         <div className="rating">
         <h4>
             {avgRating} Stars
