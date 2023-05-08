@@ -1,15 +1,18 @@
 import RestoCard from "../Card/RestoCard";
-// import  SearchComponent from "../Search/SearchComponent";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "../Shimmer";
 import { Link } from "react-router-dom";
 import { RESTA_LIST_API_URL } from "../../../constant";
 import useConnectivityCheck from "../../utils/useConnectivityCheck";
+import UserContext from "../../utils/UserContext";
 
 const BodyComponent = () => {
   const [searchText, setSearchText] = useState("");
   const [searchData, setSearchData] = useState([]);
   const [allResta, setAllResta] = useState([]);
+
+  const user = useContext(UserContext);
+  const { userInfo } = user;
 
   function filterData(allResta, searchText) {
     const filterData = allResta.filter((data) => {
@@ -18,8 +21,6 @@ const BodyComponent = () => {
 
     return filterData;
   }
-
-
 
   useEffect(() => {
     Api();
@@ -35,8 +36,8 @@ const BodyComponent = () => {
 
   const isConnected = useConnectivityCheck();
 
-  if(!isConnected){
-   return <h1>Please Check Your Internet Connection</h1>
+  if (!isConnected) {
+    return <h1>Please Check Your Internet Connection</h1>;
   }
 
   return searchData.length === 0 ? (
@@ -47,7 +48,7 @@ const BodyComponent = () => {
         <div className="flex py-2 px-2">
           <div className="px-5">
             <input
-            className="p-3 outline-none bg-pink-50 rounded-md"
+              className="p-3 outline-none bg-pink-50 rounded-md"
               type="text"
               placeholder="Search Here..."
               value={searchText}
@@ -57,20 +58,28 @@ const BodyComponent = () => {
             />
           </div>
 
-          <div className="rounded-lg bg-purple-800 text-white p-2 hover:bg-green-700 cursor-pointer"
-            
-          
-              onClick={() => {
-                const data = filterData(allResta, searchText);
-                setSearchData(data);
-              }}
+          <div
+            className="rounded-lg bg-purple-800 text-white p-2 hover:bg-green-700 cursor-pointer"
+            onClick={() => {
+              const data = filterData(allResta, searchText);
+              setSearchData(data);
+            }}
           >
-              Search
-            </div>
+            Search
           </div>
-          <h1></h1>
+          <input
+            type="text"
+            value={userInfo.name}
+            onChange={(e) => {
+              user.setUserInfo({
+                ...user.userInfo,
+                name: e.target.value,
+              });
+            }}
+          />
         </div>
-      
+      </div>
+
       <div className="flex justify-around  flex-wrap p-5">
         {searchData.map((details) => {
           return (

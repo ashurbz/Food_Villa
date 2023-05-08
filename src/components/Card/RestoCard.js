@@ -1,10 +1,15 @@
+
 import { CARD_IMG_URL } from "../../../constant";
+
 
 const RestoCard = ({props}) => {
 
+
   
     const {name,cloudinaryImageId,cuisines,avgRating} =props;
-     
+
+    
+    
         return(
       <div className="w-52 overflow-hidden bg-pink-50 rounded-lg" >
         <div className="resto-image">
@@ -21,6 +26,7 @@ const RestoCard = ({props}) => {
         <h4>
             {avgRating} Stars
         </h4>
+     
         </div>
     
       </div>

@@ -1,38 +1,27 @@
 import { useEffect, useState } from "react";
 
+const useConnectivityCheck = () => {
+  const [isConnected, setIsConnected] = useState(true);
 
-const useConnectivityCheck = () =>{
-    const [isConnected, setIsConnected] =useState(true);
+  useEffect(() => {
+    const online = () => {
+      setIsConnected(true);
+    };
 
-    useEffect(()=>{
+    const offline = () => {
+      setIsConnected(false);
+    };
 
-        const online =()=>{
-            setIsConnected(true)
-        }
+    window.addEventListener("online", online);
+    window.addEventListener("offline", offline);
 
-        const offline =() =>{
-            setIsConnected(false)
-        }
+    return () => {
+      window.removeEventListener("online", online);
+      window.removeEventListener("offline", offline);
+    };
+  }, []);
 
-        
-
-        window.addEventListener('online',online)
-        window.addEventListener('offline',offline)
-
-            return ()=>{
-                window.removeEventListener('online',online)
-                window.removeEventListener('offline',offline)
-            }
-
-       
-
-
-
-    },
-    
-    [])
-
-    return isConnected;
-}
+  return isConnected;
+};
 
 export default useConnectivityCheck;
