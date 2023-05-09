@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import useConnectivityCheck from "../../utils/useConnectivityCheck";
 import UserContext from "../../utils/UserContext";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 const Title = () => {
   return (
@@ -41,7 +42,10 @@ const HeaderComponent = () => {
         <span>{name}</span>
       </div>
       <div className="cart-container">
-        <Cart />
+      <Link to='/cart'>
+      <Cart />
+      </Link>
+        
       </div>
     </div>
   );

@@ -11,6 +11,9 @@ import Contact from "./components/Contact";
 import {createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
 import Shimmer from "./components/Shimmer";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import CartItems from "./components/CartItems";
+import store from "./utils/store";
 
 const Instamart = lazy(()=>{
  return import('./components/HeaderComponent/Instamart')
@@ -23,7 +26,7 @@ const AppLayout = () => {
     
   })
   return (
-    <>
+    <Provider store={store}>
     <UserContext.Provider value={{
       userInfo:userInfo,
       setUserInfo:setUserInfo
@@ -35,7 +38,7 @@ const AppLayout = () => {
       <Footer/>
       </UserContext.Provider>
 
-    </>
+    </Provider>
   );
 };
 
@@ -73,6 +76,10 @@ const appRoutes = createBrowserRouter([
       element: <Suspense fallback={<Shimmer/>}>
         <Instamart/>
       </Suspense> 
+    },
+    {
+      path:'/cart',
+      element: <CartItems/>
     }
     
   ]

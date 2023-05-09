@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { CARD_IMG_URL, MENU_IMG_URL } from "../../constant";
 import { useParams } from "react-router-dom";
 import { RESTA_MENU_API_URL } from "../../constant";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
 const RestaList = () => {
   // not able to give null
@@ -9,12 +11,18 @@ const RestaList = () => {
 
   const { id } = useParams();
 
+  const dispatch = useDispatch()
+
+  const handleAddItems =(item)=>{
+    dispatch(addItem(item));
+  }
+
   useEffect(() => {
   
     getRestoList();
 
    const timer = setInterval(()=>{
-      console.log('setInterval from RestaList')
+     
     },1000)
 
    return ()=>{
@@ -58,6 +66,7 @@ const RestaList = () => {
       </div>
       <div className="p-5">
           <div className="p-5">
+            
             {restaMenuDetails[0]?.restaurantMenu.map((item)=>{
               return <div >
                <ul>
@@ -71,7 +80,9 @@ const RestaList = () => {
                
                <span> {item?.card?.info.description} </span>
 
-               
+               <button className="bg-green-100 p-2" onClick={()=>{
+              handleAddItems(item);
+            }}>Add Item</button>
                </div>
             })}
          </div>

@@ -18,7 +18,7 @@ class Profile extends React.Component {
             userInfo:json
         })
        this.timer= setInterval(()=>{
-            console.log('setInterval')
+        
         },1000)
     }
 
